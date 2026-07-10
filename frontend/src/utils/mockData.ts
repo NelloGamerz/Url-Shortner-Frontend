@@ -49,6 +49,7 @@ export const mockDashboardStats: DashboardStats = {
   topPerformingLink: mockLinks[2],
   thisMonthClicks: 6386,
   topLinks: mockLinks.slice(0, 3),
+  chartData: []
 };
 
 export const generateMockAnalytics = (): LinkAnalytics => ({
