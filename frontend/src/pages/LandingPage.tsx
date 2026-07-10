@@ -300,7 +300,7 @@ export function LandingPage() {
               Frequently Asked Questions
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-400">
-              Everything you need to know about Shortly
+              Everything you need to know about ViaLink
             </p>
           </div>
 
@@ -378,10 +378,10 @@ export function LandingPage() {
               <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
                 <Link2 className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">Shortly</span>
+              <span className="text-xl font-bold text-slate-900 dark:text-white">ViaLink</span>
             </div>
             <p className="text-slate-500 dark:text-slate-400 text-sm">
-              &copy; 2025 Shortly. All rights reserved.
+              &copy; 2025 ViaLink. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-slate-600 dark:text-slate-400">
               <a href="/privacy" className="hover:text-indigo-600 dark:hover:text-indigo-400">
@@ -390,7 +390,7 @@ export function LandingPage() {
               <a href="/terms" className="hover:text-indigo-600 dark:hover:text-indigo-400">
                 Terms
               </a>
-              <a href="mailto:support@shortly.com" className="hover:text-indigo-600 dark:hover:text-indigo-400">
+              <a href="mailto:support@ViaLink.com" className="hover:text-indigo-600 dark:hover:text-indigo-400">
                 Contact
               </a>
             </div>

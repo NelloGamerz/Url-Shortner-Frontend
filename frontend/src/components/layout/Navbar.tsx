@@ -27,7 +27,7 @@ export function Navbar({ isAuthenticated = false, showDashboard = false }: Navba
               <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
                 <Link2 className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">Shortly</span>
+              <span className="text-xl font-bold text-slate-900 dark:text-white">ViaLink</span>
             </Link>
           </div>
 
