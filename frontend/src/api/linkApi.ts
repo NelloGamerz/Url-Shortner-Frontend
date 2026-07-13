@@ -1,22 +1,24 @@
-import { AxiosInstance } from 'axios';
+import { AxiosInstance } from "axios";
 import {
   Link,
   CreateLinkRequest,
   CreateLinkResponse,
   UpdateLinkRequest,
   PaginatedResponse,
-} from '../types';
+} from "../types";
 
 export const createPublicLinkApi = (client: AxiosInstance) => ({
   shorten: async (url: string): Promise<CreateLinkResponse> => {
-    const response = await client.post('/public/shorten', { url });
+    const response = await client.post("/public/shorten", { url });
     return response.data;
   },
 });
 
 export const createLinkApi = (client: AxiosInstance) => ({
   getAll: async (page = 1, pageSize = 10): Promise<PaginatedResponse<Link>> => {
-    const response = await client.get(`/links?page=${page}&pageSize=${pageSize}`);
+    const response = await client.get(
+      `/links?page=${page}&pageSize=${pageSize}`,
+    );
     return response.data;
   },
 
@@ -26,7 +28,7 @@ export const createLinkApi = (client: AxiosInstance) => ({
   },
 
   create: async (data: CreateLinkRequest): Promise<Link> => {
-    const response = await client.post('/shorten', data);
+    const response = await client.post("/shorten", data);
     return response.data;
   },
 
@@ -37,5 +39,15 @@ export const createLinkApi = (client: AxiosInstance) => ({
 
   delete: async (id: string): Promise<void> => {
     await client.delete(`/links/${id}`);
+  },
+
+  generateSlug: async (
+    domain?: string,
+  ): Promise<{ slug: string; message: string }> => {
+    const response = await client.get("/shorten/generate-slug", {
+      params: domain ? { domain } : {},
+    });
+
+    return response.data;
   },
 });

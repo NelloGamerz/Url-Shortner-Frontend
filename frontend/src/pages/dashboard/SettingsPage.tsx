@@ -27,12 +27,16 @@ import {
   useSetDefaultDomain,
 } from "../../hooks/useApi";
 
+import { useToast } from "../../hooks/use-toast";
+
 const CNAME_TARGET = "cname.yourdomain.com";
 
 export function SettingsPage() {
   const [domain, setDomain] = useState("");
   const [domainError, setDomainError] = useState("");
   const [showAddDomain, setShowAddDomain] = useState(false);
+
+  const { toast } = useToast();
 
   const { data: domains = [], isLoading } = useDomains();
 
@@ -96,6 +100,25 @@ export function SettingsPage() {
         onSuccess: () => {
           setDomain("");
           setShowAddDomain(false);
+
+          toast({
+            title: "Domain Added",
+            description: "Domain added successfully.",
+          });
+        },
+
+        onError: (error: any) => {
+          const status = error?.response?.status;
+
+          toast({
+            variant: "destructive",
+            title: "Unable to add domain",
+            description:
+              status === 403
+                ? "You have reached your custom domain limit."
+                : (error?.response?.data?.message ??
+                  "Failed to add domain. Please try again."),
+          });
         },
       },
     );

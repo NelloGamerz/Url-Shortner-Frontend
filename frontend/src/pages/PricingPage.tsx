@@ -25,9 +25,9 @@ const plans: Array<{
     buttonText: "Get Started",
     features: [
       { text: "5 Short Links", included: true },
-      { text: "100 Redirects", included: true },
+      { text: "Basic Link Management", included: true },
       { text: "No Analytics", included: true },
-      { text: "QR Code Generation", included: true },
+      { text: "QR Code Generation", included: false },
       { text: "Custom Domains", included: false },
       { text: "Priority Support", included: false },
     ],
@@ -41,10 +41,9 @@ const plans: Array<{
     buttonText: "Upgrade to Pro",
     features: [
       { text: "100 Short Links", included: true },
-      { text: "10,000 Redirects", included: true },
       { text: "Basic Analytics", included: true },
       { text: "QR Code Generation", included: true },
-      { text: "Custom Domains", included: true },
+      { text: "1 Custom Domain", included: true },
       { text: "Priority Support", included: true },
     ],
   },
@@ -57,10 +56,9 @@ const plans: Array<{
     buttonText: "Go Ultimate",
     features: [
       { text: "1000 Short Links", included: true },
-      { text: "100,000 Redirects", included: true },
       { text: "Advanced Analytics", included: true },
       { text: "QR Code Generation", included: true },
-      { text: "Custom Domains", included: true },
+      { text: "5 Custom Domains", included: true },
       { text: "Priority Support", included: true },
     ],
   },
@@ -70,7 +68,9 @@ export function PricingPage() {
   const { isSignedIn } = useAuth();
   const { subscribe, isLoading, activePlan, subscription } = useSubscription();
 
-  const currentPlanId = ((subscription?.planId ?? subscription?.plan ?? "FREE") as string).toUpperCase();
+  const currentPlanId = (
+    (subscription?.planId ?? subscription?.plan ?? "FREE") as string
+  ).toUpperCase();
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
@@ -120,15 +120,17 @@ export function PricingPage() {
                   buttonText={buttonText}
                   onButtonClick={() => subscribe(plan.planId)}
                   isLoading={isLoading && activePlan === plan.planId}
-                  disabled={isLoading && activePlan !== plan.planId || isDisabled}
+                  disabled={
+                    (isLoading && activePlan !== plan.planId) || isDisabled
+                  }
                 />
               );
             })}
           </div>
 
           <div className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
-            Every plan includes secure HTTPS links, QR code generation, spam
-            protection, and reliable uptime.
+            Every plan includes secure HTTPS links, spam protection, and
+            reliable uptime.
           </div>
 
           {/* Comparison */}
@@ -165,12 +167,6 @@ export function PricingPage() {
                       ultimate: "1000",
                     },
                     {
-                      feature: "Maximum Redirects",
-                      free: "100",
-                      pro: "10,000",
-                      ultimate: "100,000",
-                    },
-                    {
                       feature: "Analytics",
                       free: "None",
                       pro: "Basic",
@@ -178,15 +174,15 @@ export function PricingPage() {
                     },
                     {
                       feature: "QR Code Generation",
-                      free: true,
+                      free: false,
                       pro: true,
                       ultimate: true,
                     },
                     {
                       feature: "Custom Domains",
                       free: false,
-                      pro: true,
-                      ultimate: true,
+                      pro: "1 Domain",
+                      ultimate: "5 Domains",
                     },
                     {
                       feature: "Priority Support",

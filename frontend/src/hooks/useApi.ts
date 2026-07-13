@@ -38,6 +38,39 @@ const domainKeys = {
   list: () => [...domainKeys.all, "list"] as const,
 };
 
+const verifiedDomainKeys = {
+  list: () => [...domainKeys.all, "verified"] as const,
+};
+
+// export function useGenerateSlug() {
+//   const client = useProtectedApiClient();
+//   const api = createLinkApi(client);
+
+//   return useMutation({
+//     mutationFn: () => api.generateSlug(),
+//   });
+// }
+
+export function useGenerateSlug() {
+  const client = useProtectedApiClient();
+  const api = createLinkApi(client);
+
+  return useMutation({
+    mutationFn: (domain?: string) => api.generateSlug(domain),
+  });
+}
+
+export function useVerifiedDomains() {
+  const client = useProtectedApiClient();
+  const api = createDomainApi(client);
+
+  return useQuery({
+    queryKey: verifiedDomainKeys.list(),
+    queryFn: () => api.getVerifiedDomains(),
+    staleTime: 60000,
+  });
+}
+
 export function useLinks(page = 1, pageSize = 10) {
   const client = useProtectedApiClient();
   const api = createLinkApi(client);

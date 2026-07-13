@@ -11,6 +11,7 @@ export interface Link {
 export interface CreateLinkRequest {
   url: string;
   customAlias?: string;
+  domain?: string;
 }
 
 export interface CreateLinkResponse {

@@ -13,8 +13,10 @@ export interface Payment {
 export interface Usage {
   id: string;
   userId: string;
-  linksCreated: number;
-  clicks: number;
+  metrics: {
+    links_created: number;
+    clicks?: number;
+  };
   period: string;
   updatedAt: string;
 }

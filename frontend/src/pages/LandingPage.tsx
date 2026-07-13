@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import {
   Link2,
   BarChart3,
@@ -8,89 +8,89 @@ import {
   QrCode,
   ArrowRight,
   Check,
-} from 'lucide-react';
-import { Button } from '../components/ui/button';
-import { Navbar } from '../components/layout/Navbar';
-import { FeatureCard } from '../components/common/FeatureCard';
-import { AnalyticsChart } from '../components/common/AnalyticsChart';
-import { generateDashboardChart } from '../utils/mockData';
-import { SignedIn, SignedOut, useAuth } from '@clerk/clerk-react';
+} from "lucide-react";
+import { Button } from "../components/ui/button";
+import { Navbar } from "../components/layout/Navbar";
+import { FeatureCard } from "../components/common/FeatureCard";
+import { AnalyticsChart } from "../components/common/AnalyticsChart";
+import { generateDashboardChart } from "../utils/mockData";
+import { SignedIn, SignedOut, useAuth } from "@clerk/clerk-react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '../components/ui/accordion';
+} from "../components/ui/accordion";
 
 const features = [
   {
     icon: Link2,
-    title: 'Instant Short Links',
+    title: "Instant Short Links",
     description:
-      'Transform long URLs into short, memorable links in seconds. Perfect for sharing on social media, emails, and messages.',
+      "Transform long URLs into short, memorable links in seconds. Perfect for sharing on social media, emails, and messages.",
   },
   {
     icon: BarChart3,
-    title: 'Detailed Analytics',
+    title: "Detailed Analytics",
     description:
-      'Track every click with comprehensive analytics. Understand your audience with location, device, and referrer data.',
+      "Track every click with comprehensive analytics. Understand your audience with location, device, and referrer data.",
   },
   {
     icon: QrCode,
-    title: 'QR Code Generation',
+    title: "QR Code Generation",
     description:
-      'Generate QR codes for your short links instantly. Perfect for print materials, events, and offline marketing.',
+      "Generate QR codes for your short links instantly. Perfect for print materials, events, and offline marketing.",
   },
   {
     icon: Zap,
-    title: 'Lightning Fast',
+    title: "Lightning Fast",
     description:
-      'Built for speed with instant redirects. Your users will never notice the difference.',
+      "Built for speed with instant redirects. Your users will never notice the difference.",
   },
   {
     icon: Shield,
-    title: 'Secure & Reliable',
+    title: "Secure & Reliable",
     description:
-      'Enterprise-grade security with SSL encryption. Your links are safe and always accessible.',
+      "Enterprise-grade security with SSL encryption. Your links are safe and always accessible.",
   },
   {
     icon: Globe,
-    title: 'Custom Domains',
+    title: "Custom Domains",
     description:
-      'Use your own domain for branded short links. Build trust with professional-looking URLs.',
+      "Use your own domain for branded short links. Build trust with professional-looking URLs.",
   },
 ];
 
 const faqs = [
   {
-    question: 'How many links can I create for free?',
+    question: "How many links can I create for free?",
     answer:
-      'On the free plan, you can create up to 20 short links with basic analytics. This is perfect for personal use or trying out the platform.',
+      "On the free plan, you can create up to 20 short links with basic analytics. This is perfect for personal use or trying out the platform.",
   },
   {
-    question: 'Can I customize my short links?',
+    question: "Can I customize my short links?",
     answer:
-      'Absolutely! You can create custom aliases for your links, making them more memorable and on-brand. For example, short.ly/my-product instead of random characters.',
+      "Absolutely! You can create custom aliases for your links, making them more memorable and on-brand. For example, short.ly/my-product instead of random characters.",
   },
   {
-    question: 'What analytics are included?',
+    question: "What analytics are included?",
     answer:
-      'Track total clicks, geographic location of visitors, device types, browsers, referrers, and click trends over time. Pro users get advanced analytics with detailed breakdowns.',
+      "Track total clicks, geographic location of visitors, device types, browsers, referrers, and click trends over time. Pro users get advanced analytics with detailed breakdowns.",
   },
   {
-    question: 'Are the links permanent?',
+    question: "Are the links permanent?",
     answer:
-      'Yes, all links remain active as long as your account is in good standing. Unlike some free services, we never delete your links.',
+      "Yes, all links remain active as long as your account is in good standing. Unlike some free services, we never delete your links.",
   },
   {
-    question: 'Can I use my own custom domain?',
+    question: "Can I use my own custom domain?",
     answer:
-      'Custom domains are available on the Pro plan. This allows you to create branded short links like go.yourcompany.com/promo.',
+      "Custom domains are available on the Pro plan. This allows you to create branded short links like go.yourcompany.com/promo.",
   },
   {
-    question: 'How do I upgrade to Pro?',
+    question: "How do I upgrade to Pro?",
     answer:
-      'You can upgrade to Pro at any time from the Billing page in your dashboard. Pro unlocks unlimited links, advanced analytics, priority support, and custom domains.',
+      "You can upgrade to Pro at any time from the Billing page in your dashboard. Pro unlocks unlimited links, advanced analytics, priority support, and custom domains.",
   },
 ];
 
@@ -101,9 +101,9 @@ export function LandingPage() {
 
   const handleCreateLink = () => {
     if (isSignedIn) {
-      navigate('/dashboard/links');
+      navigate("/dashboard/links");
     } else {
-      navigate('/sign-in');
+      navigate("/sign-in");
     }
   };
 
@@ -123,13 +123,15 @@ export function LandingPage() {
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 dark:text-white mb-6 leading-tight">
-              Shorten, Track and Share Links{' '}
-              <span className="text-indigo-600 dark:text-indigo-400">Effortlessly</span>
+              Shorten, Track and Share Links{" "}
+              <span className="text-indigo-600 dark:text-indigo-400">
+                Effortlessly
+              </span>
             </h1>
 
             <p className="text-xl text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
-              Create beautiful short links with detailed analytics. Understand your audience,
-              optimize your campaigns, and drive more clicks.
+              Create beautiful short links with detailed analytics. Understand
+              your audience, optimize your campaigns, and drive more clicks.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -191,7 +193,10 @@ export function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
+      <section
+        id="features"
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50"
+      >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
@@ -211,89 +216,180 @@ export function LandingPage() {
       </section>
 
       {/* Pricing Section */}
+      {/* Pricing Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 dark:bg-indigo-950/50 rounded-full mb-6">
+              <span className="text-sm font-medium text-indigo-600 dark:text-indigo-400">
+                Simple Pricing
+              </span>
+            </div>
+
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
-              Simple, transparent pricing
+              Choose the perfect plan
             </h2>
+
             <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-              Start for free, upgrade when you need more
+              Whether you're just getting started or managing thousands of
+              links, we've got a plan for you.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Free Plan */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {/* Free */}
             <div className="p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">Free</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6">Perfect for getting started</p>
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-slate-900 dark:text-white">$0</span>
-                <span className="text-slate-500 dark:text-slate-400">/month</span>
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                Free
+              </h3>
+
+              <p className="text-slate-600 dark:text-slate-400 mb-6">
+                Perfect for getting started
+              </p>
+
+              <div className="mb-8">
+                <span className="text-5xl font-bold text-slate-900 dark:text-white">
+                  ₹0
+                </span>
               </div>
-              <ul className="space-y-3 mb-8">
+
+              <ul className="space-y-4 mb-8">
+                {["5 Short Links", "Basic Link Management", "No Analytics"].map(
+                  (feature) => (
+                    <li key={feature} className="flex items-center gap-3">
+                      <Check className="w-5 h-5 text-emerald-500 shrink-0" />
+                      <span className="text-slate-700 dark:text-slate-300">
+                        {feature}
+                      </span>
+                    </li>
+                  ),
+                )}
+
                 {[
-                  '20 Links',
-                  'Basic Analytics',
-                  'Custom Alias',
-                  'QR Code Generation',
+                  "QR Code Generation",
+                  "Custom Domains",
+                  "Priority Support",
                 ].map((feature) => (
                   <li key={feature} className="flex items-center gap-3">
-                    <Check className="w-5 h-5 text-indigo-600 dark:text-indigo-400 shrink-0" />
-                    <span className="text-slate-700 dark:text-slate-300">{feature}</span>
+                    <span className="w-5 text-center text-slate-400">—</span>
+                    <span className="text-slate-400">{feature}</span>
                   </li>
                 ))}
               </ul>
-              <Link to="/sign-up" className="block">
-                <Button
-                  variant="outline"
-                  className="w-full"
-                >
-                  Get Started Free
+
+              <Link to="/pricing">
+                <Button variant="outline" className="w-full">
+                  Get Started
                 </Button>
               </Link>
             </div>
 
-            {/* Pro Plan */}
-            <div className="p-8 bg-white dark:bg-slate-900 rounded-2xl border border-indigo-500 ring-2 ring-indigo-500/20 relative">
+            {/* Pro */}
+            <div className="relative p-8 bg-white dark:bg-slate-900 rounded-2xl border-2 border-indigo-600 shadow-xl">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                <span className="bg-indigo-600 text-white text-xs font-semibold px-3 py-1 rounded-full">
+                <span className="bg-indigo-600 text-white text-xs font-semibold px-4 py-1 rounded-full">
                   Most Popular
                 </span>
               </div>
-              <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-2">Pro</h3>
-              <p className="text-slate-600 dark:text-slate-400 mb-6">For serious link managers</p>
-              <div className="mb-6">
-                <span className="text-4xl font-bold text-slate-900 dark:text-white">$12</span>
-                <span className="text-slate-500 dark:text-slate-400">/month</span>
+
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                Pro
+              </h3>
+
+              <p className="text-slate-600 dark:text-slate-400 mb-6">
+                Best for creators and professionals
+              </p>
+
+              <div className="mb-8">
+                <span className="text-5xl font-bold text-slate-900 dark:text-white">
+                  ₹499
+                </span>
               </div>
-              <ul className="space-y-3 mb-8">
+
+              <ul className="space-y-4 mb-8">
                 {[
-                  'Unlimited Links',
-                  'Unlimited Analytics',
-                  'Priority Support',
-                  'Advanced Analytics',
+                  "100 Short Links",
+                  "Basic Analytics",
+                  "QR Code Generation",
+                  "1 Custom Domain",
+                  "Priority Support",
                 ].map((feature) => (
                   <li key={feature} className="flex items-center gap-3">
                     <Check className="w-5 h-5 text-indigo-600 dark:text-indigo-400 shrink-0" />
-                    <span className="text-slate-700 dark:text-slate-300">{feature}</span>
+                    <span className="text-slate-700 dark:text-slate-300">
+                      {feature}
+                    </span>
                   </li>
                 ))}
               </ul>
-              <Link to="/sign-up" className="block">
-                <Button
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white"
-                >
-                  Start Pro Trial
+
+              <Link to="/pricing">
+                <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white">
+                  Upgrade to Pro
                 </Button>
               </Link>
             </div>
+
+            {/* Ultimate */}
+            <div className="p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                Ultimate
+              </h3>
+
+              <p className="text-slate-600 dark:text-slate-400 mb-6">
+                Built for businesses and power users
+              </p>
+
+              <div className="mb-8">
+                <span className="text-5xl font-bold text-slate-900 dark:text-white">
+                  ₹1499
+                </span>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                {[
+                  "1000 Short Links",
+                  "Advanced Analytics",
+                  "QR Code Generation",
+                  "5 Custom Domains",
+                  "Priority Support",
+                ].map((feature) => (
+                  <li key={feature} className="flex items-center gap-3">
+                    <Check className="w-5 h-5 text-emerald-500 shrink-0" />
+                    <span className="text-slate-700 dark:text-slate-300">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+              <Link to="/pricing">
+                <Button variant="outline" className="w-full">
+                  Upgrade to Ultimate
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link to="/pricing">
+              <Button
+                variant="ghost"
+                className="text-indigo-600 hover:text-indigo-700 dark:text-indigo-400"
+              >
+                View Full Pricing Comparison
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50">
+      <section
+        id="faq"
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-900/50"
+      >
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
@@ -360,7 +456,8 @@ export function LandingPage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="text-lg px-8 h-12 border-white text-white hover:bg-white/10"
+                  // className="text-lg px-8 h-12 border-white text-blue hover:bg-white/10"
+                  className="text-lg px-8 h-12 bg-white text-indigo-600 hover:bg-slate-100"
                 >
                   View Pricing
                 </Button>
@@ -378,19 +475,30 @@ export function LandingPage() {
               <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
                 <Link2 className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-slate-900 dark:text-white">ViaLink</span>
+              <span className="text-xl font-bold text-slate-900 dark:text-white">
+                ViaLink
+              </span>
             </div>
             <p className="text-slate-500 dark:text-slate-400 text-sm">
               &copy; 2025 ViaLink. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-slate-600 dark:text-slate-400">
-              <a href="/privacy" className="hover:text-indigo-600 dark:hover:text-indigo-400">
+              <a
+                href="/privacy"
+                className="hover:text-indigo-600 dark:hover:text-indigo-400"
+              >
                 Privacy
               </a>
-              <a href="/terms" className="hover:text-indigo-600 dark:hover:text-indigo-400">
+              <a
+                href="/terms"
+                className="hover:text-indigo-600 dark:hover:text-indigo-400"
+              >
                 Terms
               </a>
-              <a href="mailto:support@ViaLink.com" className="hover:text-indigo-600 dark:hover:text-indigo-400">
+              <a
+                href="mailto:support@ViaLink.com"
+                className="hover:text-indigo-600 dark:hover:text-indigo-400"
+              >
                 Contact
               </a>
             </div>
