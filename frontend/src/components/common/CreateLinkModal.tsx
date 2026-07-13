@@ -84,7 +84,7 @@ export function CreateLinkModal({ open, onOpenChange }: CreateLinkModalProps) {
   });
 
   const url = watch("url");
-  const customAlias = watch("customAlias");
+  // const customAlias = watch("customAlias");
   const selectedDomain = watch("domain");
 
   const handleGenerateSlug = async () => {
