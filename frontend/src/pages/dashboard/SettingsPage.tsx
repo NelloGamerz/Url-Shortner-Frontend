@@ -24,7 +24,7 @@ import {
   useAddDomain,
   useVerifyDomain,
   useDeleteDomain,
-  useSetDefaultDomain,
+  // useSetDefaultDomain,
 } from "../../hooks/useApi";
 import { DeleteConfirmDialog } from "../../components/common/DeleteConfirmDialog";
 
