@@ -1,8 +1,15 @@
 import { SignIn } from '@clerk/clerk-react';
+import { SEO } from '../components/SEO.tsx';
 
 export function SignInPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 p-4">
+      <SEO
+        title="Sign In | Vialink"
+        description="Sign in to your Vialink account and manage your shortened links."
+        keywords="vialink sign in, short link dashboard login"
+        canonical="https://vialink.in/sign-in"
+      />
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-slate-900 dark:text-white">

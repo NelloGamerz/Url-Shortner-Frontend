@@ -10,6 +10,11 @@ const LandingPage = lazy(() => import('../pages/LandingPage'));
 const PricingPage = lazy(() => import('../pages/PricingPage'));
 const SignInPage = lazy(() => import('../pages/SignInPage'));
 const SignUpPage = lazy(() => import('../pages/SignUpPage'));
+const FreeUrlShortenerPage = lazy(() => import('../pages/seo/FreeUrlShortenerPage'));
+const UrlAnalyticsPage = lazy(() => import('../pages/seo/UrlAnalyticsPage'));
+const CustomLinksPage = lazy(() => import('../pages/seo/CustomLinksPage'));
+const QrCodeGeneratorPage = lazy(() => import('../pages/seo/QrCodeGeneratorPage'));
+const BlogPage = lazy(() => import('../pages/seo/BlogPage'));
 const DashboardPage = lazy(() => import('../pages/dashboard/DashboardPage'));
 const MyLinksPage = lazy(() => import('../pages/dashboard/MyLinksPage'));
 const AnalyticsPage = lazy(() => import('../pages/dashboard/AnalyticsPage'));
@@ -72,6 +77,56 @@ export const router = createBrowserRouter([
       <Suspense fallback={<LoadingFallback />}>
         <SignUpPage />
       </Suspense>
+    ),
+  },
+  {
+    path: '/free-url-shortener',
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <FreeUrlShortenerPage />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+  },
+  {
+    path: '/url-shortener-with-analytics',
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <UrlAnalyticsPage />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+  },
+  {
+    path: '/custom-short-links',
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <CustomLinksPage />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+  },
+  {
+    path: '/qr-code-generator',
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <QrCodeGeneratorPage />
+        </Suspense>
+      </ErrorBoundary>
+    ),
+  },
+  {
+    path: '/blog',
+    element: (
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <BlogPage />
+        </Suspense>
+      </ErrorBoundary>
     ),
   },
   {

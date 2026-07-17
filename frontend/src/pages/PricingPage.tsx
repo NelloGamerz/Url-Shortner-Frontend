@@ -6,6 +6,7 @@ import { PricingCard } from "../components/common/PricingCard";
 import { useAuth } from "@clerk/clerk-react";
 import type { SubscriptionPlanId } from "../services/subscriptionService";
 import { useSubscription } from "../hooks/useSubscription";
+import { SEO } from "../components/SEO.tsx";
 
 const plans: Array<{
   name: string;
@@ -74,6 +75,12 @@ export function PricingPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
+      <SEO
+        title="Vialink Pricing - Affordable URL Shortener Plans"
+        description="Choose the best Vialink plan for URL shortening, analytics, custom links, and advanced link management."
+        keywords="url shortener pricing, short link plans, link management pricing"
+        canonical="https://vialink.in/pricing"
+      />
       <Navbar isAuthenticated={isSignedIn} showDashboard={isSignedIn} />
 
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">

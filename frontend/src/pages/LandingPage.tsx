@@ -21,6 +21,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../components/ui/accordion";
+import { SEO } from "../components/SEO.tsx";
 
 const features = [
   {
@@ -109,6 +110,12 @@ export function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-950">
+      <SEO
+        title="Free URL Shortener - Create Short Links Instantly | Vialink"
+        description="Create free short links with Vialink. Shorten long URLs instantly, share links easily, and manage your URLs."
+        keywords="free URL shortener, short link generator, URL shortener online"
+        canonical="https://vialink.in/"
+      />
       <Navbar isAuthenticated={isSignedIn} showDashboard={isSignedIn} />
 
       {/* Hero Section */}
@@ -480,7 +487,7 @@ export function LandingPage() {
               </span>
             </div>
             <p className="text-slate-500 dark:text-slate-400 text-sm">
-              &copy; 2025 ViaLink. All rights reserved.
+              &copy; 2026 ViaLink. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm text-slate-600 dark:text-slate-400">
               <a
