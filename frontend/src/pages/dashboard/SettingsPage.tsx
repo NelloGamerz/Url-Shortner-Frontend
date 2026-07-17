@@ -26,10 +26,11 @@ import {
   useDeleteDomain,
   useSetDefaultDomain,
 } from "../../hooks/useApi";
+import { DeleteConfirmDialog } from "../../components/common/DeleteConfirmDialog";
 
 import { useToast } from "../../hooks/use-toast";
 
-const CNAME_TARGET = "cname.yourdomain.com";
+const CNAME_TARGET = import.meta.env.VITE_CUSTOM_DOMAIN;
 
 export function SettingsPage() {
   const [domain, setDomain] = useState("");
@@ -45,8 +46,9 @@ export function SettingsPage() {
   const verifyDomainMutation = useVerifyDomain();
 
   const deleteDomainMutation = useDeleteDomain();
+  const [domainToDelete, setDomainToDelete] = useState<string | null>(null);
 
-  const setDefaultDomainMutation = useSetDefaultDomain();
+  // const setDefaultDomainMutation = useSetDefaultDomain();
 
   const validateSubdomain = (value: string) => {
     const parts = value.split(".");
@@ -239,10 +241,17 @@ export function SettingsPage() {
                   </div>
                 </div>
 
-                <Button
+                {/* <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => deleteDomainMutation.mutate(item.id)}
+                >
+                  <Trash2 className="w-4 h-4 text-red-500" />
+                </Button> */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setDomainToDelete(item.id)}
                 >
                   <Trash2 className="w-4 h-4 text-red-500" />
                 </Button>
@@ -285,17 +294,55 @@ export function SettingsPage() {
                     </Button>
                   </div>
 
-                  <Button
+                  {/* <Button
                     size="sm"
                     onClick={() => verifyDomainMutation.mutate(item.id)}
                     disabled={verifyDomainMutation.isPending}
                   >
                     Verify DNS
+                  </Button> */}
+
+                  <Button
+                    size="sm"
+                    onClick={() => {
+                      verifyDomainMutation.mutate(item.id, {
+                        onSuccess: () => {
+                          toast({
+                            title: "DNS Verified",
+                            description:
+                              "Your domain has been verified successfully.",
+                          });
+                        },
+
+                        onError: (error: any) => {
+                          const status = error?.response?.status;
+
+                          toast({
+                            variant: "destructive",
+                            title: "DNS Verification Failed",
+                            description:
+                              status === 400
+                                ? "DNS record not found. Please check your CNAME configuration."
+                                : status === 404
+                                  ? "Domain not found."
+                                  : status === 500
+                                    ? "Unexpected error occurred while verifying DNS. Please try again later."
+                                    : (error?.response?.data?.message ??
+                                      "Unable to verify DNS. Please try again."),
+                          });
+                        },
+                      });
+                    }}
+                    disabled={verifyDomainMutation.isPending}
+                  >
+                    {verifyDomainMutation.isPending
+                      ? "Checking..."
+                      : "Verify DNS"}
                   </Button>
                 </div>
               )}
 
-              {!item.isDefault && item.dnsStatus === "verified" && (
+              {/* {!item.isDefault && item.dnsStatus === "verified" && (
                 <Button
                   variant="outline"
                   size="sm"
@@ -303,7 +350,7 @@ export function SettingsPage() {
                 >
                   Set as Default
                 </Button>
-              )}
+              )} */}
             </div>
           ))}
         </CardContent>
@@ -374,6 +421,40 @@ export function SettingsPage() {
           </div>
         </div>
       )}
+
+      <DeleteConfirmDialog
+        open={!!domainToDelete}
+        onOpenChange={(open) => {
+          if (!open) {
+            setDomainToDelete(null);
+          }
+        }}
+        title="Delete Domain"
+        description="Are you sure you want to delete this custom domain? This action cannot be undone."
+        isLoading={deleteDomainMutation.isPending}
+        onConfirm={() => {
+          if (!domainToDelete) return;
+
+          deleteDomainMutation.mutate(domainToDelete, {
+            onSuccess: () => {
+              setDomainToDelete(null);
+
+              toast({
+                title: "Domain Deleted",
+                description: "Custom domain removed successfully.",
+              });
+            },
+
+            onError: () => {
+              toast({
+                variant: "destructive",
+                title: "Delete Failed",
+                description: "Unable to delete domain. Please try again.",
+              });
+            },
+          });
+        }}
+      />
     </div>
   );
 }

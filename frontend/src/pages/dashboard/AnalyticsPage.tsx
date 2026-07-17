@@ -179,7 +179,7 @@ export function AnalyticsPage() {
       {/* Top Referrers and Geographic Data */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Top Referrers */}
-        {/* <Card className="border-slate-200 dark:border-slate-800">
+        <Card className="border-slate-200 dark:border-slate-800">
           <CardHeader>
             <CardTitle className="text-lg font-semibold text-slate-900 dark:text-white">
               Top Traffic Sources
@@ -218,7 +218,7 @@ export function AnalyticsPage() {
               ))}
             </div>
           </CardContent>
-        </Card> */}
+        </Card>
 
         {/* Geographic Data */}
         <Card className="border-slate-200 dark:border-slate-800">
@@ -274,9 +274,9 @@ export function AnalyticsPage() {
                   <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                     Time
                   </th>
-                  {/* <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                  <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                     Referrer
-                  </th> */}
+                  </th>
                   <th className="px-4 py-3 text-left text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                     Device
                   </th>
