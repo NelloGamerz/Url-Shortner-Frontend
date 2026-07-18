@@ -1,26 +1,31 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
-import { ProtectedRoute } from '../components/ProtectedRoute';
-import { DashboardLayout } from '../layouts/DashboardLayout';
-import { ErrorBoundary } from '../components/common/ErrorBoundary';
-import { NotFound } from '../components/common/NotFound';
-import { useSubscription } from '../hooks/useSubscription';
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { ProtectedRoute } from "../components/ProtectedRoute";
+import { DashboardLayout } from "../layouts/DashboardLayout";
+import { ErrorBoundary } from "../components/common/ErrorBoundary";
+import { NotFound } from "../components/common/NotFound";
+import { useSubscription } from "../hooks/useSubscription";
+import { AppLayout } from "../layouts/AppLayout";
 
-const LandingPage = lazy(() => import('../pages/LandingPage'));
-const PricingPage = lazy(() => import('../pages/PricingPage'));
-const SignInPage = lazy(() => import('../pages/SignInPage'));
-const SignUpPage = lazy(() => import('../pages/SignUpPage'));
-const FreeUrlShortenerPage = lazy(() => import('../pages/seo/FreeUrlShortenerPage'));
-const UrlAnalyticsPage = lazy(() => import('../pages/seo/UrlAnalyticsPage'));
-const CustomLinksPage = lazy(() => import('../pages/seo/CustomLinksPage'));
-const QrCodeGeneratorPage = lazy(() => import('../pages/seo/QrCodeGeneratorPage'));
-const BlogPage = lazy(() => import('../pages/seo/BlogPage'));
-const DashboardPage = lazy(() => import('../pages/dashboard/DashboardPage'));
-const MyLinksPage = lazy(() => import('../pages/dashboard/MyLinksPage'));
-const AnalyticsPage = lazy(() => import('../pages/dashboard/AnalyticsPage'));
-const ProfilePage = lazy(() => import('../pages/dashboard/ProfilePage'));
-const BillingPage = lazy(() => import('../pages/dashboard/BillingPage'));
-const SettingsPage = lazy(() => import('../pages/dashboard/SettingsPage'));
+const LandingPage = lazy(() => import("../pages/LandingPage"));
+const PricingPage = lazy(() => import("../pages/PricingPage"));
+const SignInPage = lazy(() => import("../pages/SignInPage"));
+const SignUpPage = lazy(() => import("../pages/SignUpPage"));
+const FreeUrlShortenerPage = lazy(
+  () => import("../pages/seo/FreeUrlShortenerPage"),
+);
+const UrlAnalyticsPage = lazy(() => import("../pages/seo/UrlAnalyticsPage"));
+const CustomLinksPage = lazy(() => import("../pages/seo/CustomLinksPage"));
+const QrCodeGeneratorPage = lazy(
+  () => import("../pages/seo/QrCodeGeneratorPage"),
+);
+const BlogPage = lazy(() => import("../pages/seo/BlogPage"));
+const DashboardPage = lazy(() => import("../pages/dashboard/DashboardPage"));
+const MyLinksPage = lazy(() => import("../pages/dashboard/MyLinksPage"));
+const AnalyticsPage = lazy(() => import("../pages/dashboard/AnalyticsPage"));
+const ProfilePage = lazy(() => import("../pages/dashboard/ProfilePage"));
+const BillingPage = lazy(() => import("../pages/dashboard/BillingPage"));
+const SettingsPage = lazy(() => import("../pages/dashboard/SettingsPage"));
 
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
@@ -35,7 +40,7 @@ function AnalyticsRouteGuard() {
     return <LoadingFallback />;
   }
 
-  if (subscription?.plan === 'FREE') {
+  if (subscription?.plan === "FREE") {
     return <Navigate to="/dashboard" replace />;
   }
 
@@ -44,93 +49,99 @@ function AnalyticsRouteGuard() {
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingFallback />}>
-          <LandingPage />
-        </Suspense>
-      </ErrorBoundary>
-    ),
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingFallback />}>
+              <LandingPage />
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: "/pricing",
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingFallback />}>
+              <PricingPage />
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: "/sign-in",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <SignInPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/sign-up",
+        element: (
+          <Suspense fallback={<LoadingFallback />}>
+            <SignUpPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/free-url-shortener",
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingFallback />}>
+              <FreeUrlShortenerPage />
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: "/url-shortener-with-analytics",
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingFallback />}>
+              <UrlAnalyticsPage />
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: "/custom-short-links",
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingFallback />}>
+              <CustomLinksPage />
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: "/qr-code-generator",
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingFallback />}>
+              <QrCodeGeneratorPage />
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path: "/blog",
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingFallback />}>
+              <BlogPage />
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+    ],
   },
+
   {
-    path: '/pricing',
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingFallback />}>
-          <PricingPage />
-        </Suspense>
-      </ErrorBoundary>
-    ),
-  },
-  {
-    path: '/sign-in',
-    element: (
-      <Suspense fallback={<LoadingFallback />}>
-        <SignInPage />
-      </Suspense>
-    ),
-  },
-  {
-    path: '/sign-up',
-    element: (
-      <Suspense fallback={<LoadingFallback />}>
-        <SignUpPage />
-      </Suspense>
-    ),
-  },
-  {
-    path: '/free-url-shortener',
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingFallback />}>
-          <FreeUrlShortenerPage />
-        </Suspense>
-      </ErrorBoundary>
-    ),
-  },
-  {
-    path: '/url-shortener-with-analytics',
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingFallback />}>
-          <UrlAnalyticsPage />
-        </Suspense>
-      </ErrorBoundary>
-    ),
-  },
-  {
-    path: '/custom-short-links',
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingFallback />}>
-          <CustomLinksPage />
-        </Suspense>
-      </ErrorBoundary>
-    ),
-  },
-  {
-    path: '/qr-code-generator',
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingFallback />}>
-          <QrCodeGeneratorPage />
-        </Suspense>
-      </ErrorBoundary>
-    ),
-  },
-  {
-    path: '/blog',
-    element: (
-      <ErrorBoundary>
-        <Suspense fallback={<LoadingFallback />}>
-          <BlogPage />
-        </Suspense>
-      </ErrorBoundary>
-    ),
-  },
-  {
-    path: '/dashboard',
+    path: "/dashboard",
     element: (
       <ProtectedRoute>
         <DashboardLayout />
@@ -146,7 +157,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'links',
+        path: "links",
         element: (
           <Suspense fallback={<LoadingFallback />}>
             <MyLinksPage />
@@ -154,7 +165,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'analytics',
+        path: "analytics",
         element: (
           <Suspense fallback={<LoadingFallback />}>
             <AnalyticsRouteGuard />
@@ -162,7 +173,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'profile',
+        path: "profile",
         element: (
           <Suspense fallback={<LoadingFallback />}>
             <ProfilePage />
@@ -170,7 +181,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'billing',
+        path: "billing",
         element: (
           <Suspense fallback={<LoadingFallback />}>
             <BillingPage />
@@ -178,7 +189,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: 'settings',
+        path: "settings",
         element: (
           <Suspense fallback={<LoadingFallback />}>
             <SettingsPage />
@@ -188,7 +199,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: '*',
+    path: "*",
     element: <NotFound />,
   },
 ]);

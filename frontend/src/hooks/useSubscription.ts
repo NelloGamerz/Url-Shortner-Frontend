@@ -43,6 +43,8 @@ export function useSubscription() {
             title: 'Subscription created successfully.',
             description: 'Your subscription is being processed by the backend.',
           });
+
+          window.location.href = "/pricing?payment=success";
         },
         modal: {
           ondismiss: () => {

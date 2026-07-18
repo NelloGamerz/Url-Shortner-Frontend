@@ -133,51 +133,6 @@ export function BillingPage() {
       </Card>
 
       {/* Upgrade Card */}
-      {/* {currentPlan.plan === "free" && (
-        <Card className="border-indigo-500 ring-2 ring-indigo-500/20 bg-gradient-to-br from-white to-indigo-50 dark:from-slate-900 dark:to-indigo-950/30">
-          <CardHeader>
-            <div className="flex items-center justify-between">
-              <CardTitle className="text-lg">Upgrade Your Plan</CardTitle>
-
-              <div className="px-3 py-1 rounded-full bg-indigo-600 text-white text-xs font-semibold">
-                From ₹499/month
-              </div>
-            </div>
-          </CardHeader>
-
-          <CardContent>
-            <ul className="space-y-3 mb-6">
-              {[
-                "Up to 1000 Short Links",
-                "Basic & Advanced Analytics",
-                "1 Custom Domain",
-                "Priority Support",
-                "QR Code Generation",
-              ].map((feature) => (
-                <li key={feature} className="flex items-center gap-3">
-                  <div className="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-900/50 flex items-center justify-center">
-                    <Check className="w-3 h-3 text-indigo-600 dark:text-indigo-400" />
-                  </div>
-
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            <Button
-              className="w-full bg-indigo-600 hover:bg-indigo-700"
-              onClick={() => navigate("/pricing")}
-            >
-              <Zap className="w-4 h-4 mr-2" />
-              Upgrade Now
-            </Button>
-
-            <p className="text-xs text-center text-slate-500 mt-3">
-              Secure payments powered by Razorpay.
-            </p>
-          </CardContent>
-        </Card>
-      )} */}
       <Card className="border-indigo-500 ring-2 ring-indigo-500/20 bg-gradient-to-br from-white to-indigo-50 dark:from-slate-900 dark:to-indigo-950/30">
         <CardHeader>
           <div className="flex items-center justify-between">
