@@ -6,6 +6,8 @@ import { ErrorBoundary } from "../components/common/ErrorBoundary";
 import { NotFound } from "../components/common/NotFound";
 import { useSubscription } from "../hooks/useSubscription";
 import { AppLayout } from "../layouts/AppLayout";
+import Terms from "@/pages/Terms";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
 
 const LandingPage = lazy(() => import("../pages/LandingPage"));
 const PricingPage = lazy(() => import("../pages/PricingPage"));
@@ -113,6 +115,26 @@ export const router = createBrowserRouter([
           <ErrorBoundary>
             <Suspense fallback={<LoadingFallback />}>
               <CustomLinksPage />
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path:"/terms",
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingFallback/>}>
+              <Terms/>
+            </Suspense>
+          </ErrorBoundary>
+        ),
+      },
+      {
+        path:"/privacy",
+        element: (
+          <ErrorBoundary>
+            <Suspense fallback={<LoadingFallback/>}>
+              <PrivacyPolicy/>
             </Suspense>
           </ErrorBoundary>
         ),

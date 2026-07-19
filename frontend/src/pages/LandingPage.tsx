@@ -462,7 +462,7 @@ export function LandingPage() {
               <Link to="/pricing">
                 <Button
                   size="lg"
-                  variant="outline"
+                  variant="secondary"
                   // className="text-lg px-8 h-12 border-white text-blue hover:bg-white/10"
                   className="text-lg px-8 h-12 bg-white text-indigo-600 hover:bg-slate-100"
                 >
@@ -503,7 +503,7 @@ export function LandingPage() {
                 Terms
               </a>
               <a
-                href="mailto:support@ViaLink.com"
+                href="mailto:support@vialink.in"
                 className="hover:text-indigo-600 dark:hover:text-indigo-400"
               >
                 Contact

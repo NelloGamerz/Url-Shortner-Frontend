@@ -40,9 +40,17 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           onClick={onClose}
         />
       )}
-      <aside
+      {/* <aside
         className={cn(
           "fixed inset-y-0 left-0 z-50 flex h-screen w-64 flex-col bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 transform transition-transform duration-200 ease-in-out",
+          "lg:translate-x-0",
+          isOpen ? "translate-x-0" : "-translate-x-full",
+        )}
+      > */}
+      <aside
+        className={cn(
+          "fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800",
+          "flex flex-col h-screen",
           "lg:translate-x-0",
           isOpen ? "translate-x-0" : "-translate-x-full",
         )}
@@ -75,7 +83,8 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
           </Link>
         </div>
 
-        <nav className="flex-1 overflow-y-auto p-4 space-y-1">
+        {/* <nav className="flex-1 overflow-y-auto p-4 space-y-1"> */}
+        <nav className="flex-1 min-h-0 overflow-y-auto p-4 space-y-1">
           {navigation.map((item) => {
             const isActive =
               location.pathname === item.href ||
