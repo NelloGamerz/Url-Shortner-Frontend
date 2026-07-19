@@ -6,6 +6,7 @@ import { Toaster } from './components/ui/toaster';
 import { router } from './routes/router';
 import { setSubscriptionAuthTokenProvider, useSubscriptionStore } from './store/subscriptionStore';
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
 
@@ -59,6 +60,7 @@ function App() {
         <RouterProvider router={router} />
         <Toaster />
         <SpeedInsights />
+        <Analytics />
       </QueryClientProvider>
     </ClerkProvider>
   );
